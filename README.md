@@ -48,6 +48,12 @@ All data is provided via a simple REST API or static JSON. No real authenticatio
 ### Empty States
 - Friendly illustrations and callouts when no data exists
 
+Snapshot of Portal
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/14ae5294-ef44-4d3b-a4a2-91a5fcb9e2aa" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/3781269c-def8-46fd-a88f-c0b8957c0199" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/4f9a2d66-d832-4628-b4da-1ab4ee6afa7b" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/718176da-e259-40f4-93cf-a6c95e3863b7" />
+
 
 ## ⚙️ Setup Instructions
 
@@ -62,12 +68,3 @@ npm run dev   # for Vite setup
 # OR
 npm start     # for Create React App
 
-### Snapshot of Portal
-
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/6392ff50-94c5-4bc1-b564-78e41657c317" />
-
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/7fb5b5a8-673d-408a-b7e2-a9c2f802face" />
-
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/7c043f16-9081-4740-9d91-d4abdac83536" />
-
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/3a1e5648-9f41-4c1a-906d-f7bcdc95165a" />
