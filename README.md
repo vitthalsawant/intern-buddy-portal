@@ -1,73 +1,67 @@
-# Welcome to your Lovable project
+# Full Stack Intern Portal (Enhanced & Decorative)
 
-## Project info
+A lightweight, polished intern dashboard with dummy full-stack data, gamification, referral tracking, and smooth UI animations. Built to feel modern and engaging while using static or mocked backend data.
 
-**URL**: https://lovable.dev/projects/44dbe6da-d63b-491f-b6c8-5492f6ca6c36
+## 🚀 Project Overview
 
-## How can I edit this code?
+This portal simulates an intern experience with:
+- Dashboard showing donations, referral code, unlocked rewards
+- Leaderboard (static/dummy)
+- Profile & referral sharing
+- Gamified achievement system
+- Theme toggling (Light/Dark)
+- Activity feed and progress tracking
 
-There are several ways of editing your application.
+All data is provided via a simple REST API or static JSON. No real authentication—flows are simulated for UX fidelity.
 
-**Use Lovable**
+## 🛠 Tech Stack
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/44dbe6da-d63b-491f-b6c8-5492f6ca6c36) and start prompting.
+- **Frontend:** React (or plain HTML/CSS/JS), Tailwind CSS, Framer Motion (for animation)
+- **Backend:** Node.js + Express / Firebase / Static JSON (any simple REST provider)
+- **Optional Data Store:** Firebase / MongoDB / JSON file (read-only)
+- **Dev Tools:** Postman (for mocking), Vite/Create React App, Git
 
-Changes made via Lovable will be committed automatically to this repo.
+## ✨ Key Features
 
-**Use your preferred IDE**
+### Dashboard
+- Intern name, referral code, and total donations raised
+- Reward badges (locked/unlocked) with hover tooltips
+- Donation goal progress bar
+- Recent activity feed
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Leaderboard
+- Static top interns by donations
+- Highlight current user
+- Toggle between "This Week" / "All Time" (simulated)
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Profile & Referral
+- Editable-looking profile card with avatar placeholder
+- Copyable referral code and mock social share buttons
 
-Follow these steps:
+### Theme Switcher
+- Light/Dark mode with smooth transition
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Gamification
+- Levels (Bronze/Silver/Gold) based on amount raised
+- Next milestone preview
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Empty States
+- Friendly illustrations and callouts when no data exists
 
-# Step 3: Install the necessary dependencies.
-npm i
+## 🎨 Animations & UI Interactions
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+Animations are designed to be subtle, performant, and reinforce feedback:
 
-**Edit a file directly in GitHub**
+#### 1. **Progress Bar Fill**
+- **Effect:** Smooth width transition when dashboard loads.
+- **Implementation:** Animate CSS width with easing (e.g., using Framer Motion or `transition: width 1s ease-out`).
+- **UX:** Visualizes progress toward donation goal; initial state is 0%, then animates to actual value.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/44dbe6da-d63b-491f-b6c8-5492f6ca6c36) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+```jsx
+// Example using Framer Motion
+<motion.div
+  className="bg-gradient-to-r from-green-400 to-blue-500 h-3 rounded"
+  initial={{ width: 0 }}
+  animate={{ width: `${percentRaised}%` }}
+  transition={{ duration: 1.2, ease: "easeOut" }}
+/>
