@@ -14,7 +14,171 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      achievements: {
+        Row: {
+          created_at: string
+          description: string | null
+          icon: string | null
+          id: string
+          name: string
+          threshold_amount: number | null
+          type: Database["public"]["Enums"]["achievement_type"]
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          icon?: string | null
+          id?: string
+          name: string
+          threshold_amount?: number | null
+          type: Database["public"]["Enums"]["achievement_type"]
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          icon?: string | null
+          id?: string
+          name?: string
+          threshold_amount?: number | null
+          type?: Database["public"]["Enums"]["achievement_type"]
+        }
+        Relationships: []
+      }
+      donations: {
+        Row: {
+          amount: number
+          created_at: string
+          donor_name: string | null
+          id: string
+          intern_id: string
+          referral_used: boolean | null
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          donor_name?: string | null
+          id?: string
+          intern_id: string
+          referral_used?: boolean | null
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          donor_name?: string | null
+          id?: string
+          intern_id?: string
+          referral_used?: boolean | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "donations_intern_id_fkey"
+            columns: ["intern_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["user_id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          display_name: string
+          id: string
+          level: string | null
+          referral_code: string
+          total_raised: number | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          display_name: string
+          id?: string
+          level?: string | null
+          referral_code: string
+          total_raised?: number | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          display_name?: string
+          id?: string
+          level?: string | null
+          referral_code?: string
+          total_raised?: number | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      referrals: {
+        Row: {
+          amount_raised: number | null
+          created_at: string
+          id: string
+          intern_id: string
+          referred_by: string | null
+        }
+        Insert: {
+          amount_raised?: number | null
+          created_at?: string
+          id?: string
+          intern_id: string
+          referred_by?: string | null
+        }
+        Update: {
+          amount_raised?: number | null
+          created_at?: string
+          id?: string
+          intern_id?: string
+          referred_by?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "referrals_intern_id_fkey"
+            columns: ["intern_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["user_id"]
+          },
+        ]
+      }
+      user_achievements: {
+        Row: {
+          achievement_id: string
+          id: string
+          status: Database["public"]["Enums"]["achievement_status"] | null
+          unlocked_at: string | null
+          user_id: string
+        }
+        Insert: {
+          achievement_id: string
+          id?: string
+          status?: Database["public"]["Enums"]["achievement_status"] | null
+          unlocked_at?: string | null
+          user_id: string
+        }
+        Update: {
+          achievement_id?: string
+          id?: string
+          status?: Database["public"]["Enums"]["achievement_status"] | null
+          unlocked_at?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_achievements_achievement_id_fkey"
+            columns: ["achievement_id"]
+            isOneToOne: false
+            referencedRelation: "achievements"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +187,8 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      achievement_status: "locked" | "unlocked"
+      achievement_type: "badge" | "level" | "milestone"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +315,9 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      achievement_status: ["locked", "unlocked"],
+      achievement_type: ["badge", "level", "milestone"],
+    },
   },
 } as const
