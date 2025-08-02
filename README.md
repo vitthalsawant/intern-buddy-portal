@@ -48,20 +48,3 @@ All data is provided via a simple REST API or static JSON. No real authenticatio
 ### Empty States
 - Friendly illustrations and callouts when no data exists
 
-## 🎨 Animations & UI Interactions
-
-Animations are designed to be subtle, performant, and reinforce feedback:
-
-#### 1. **Progress Bar Fill**
-- **Effect:** Smooth width transition when dashboard loads.
-- **Implementation:** Animate CSS width with easing (e.g., using Framer Motion or `transition: width 1s ease-out`).
-- **UX:** Visualizes progress toward donation goal; initial state is 0%, then animates to actual value.
-
-```jsx
-// Example using Framer Motion
-<motion.div
-  className="bg-gradient-to-r from-green-400 to-blue-500 h-3 rounded"
-  initial={{ width: 0 }}
-  animate={{ width: `${percentRaised}%` }}
-  transition={{ duration: 1.2, ease: "easeOut" }}
-/>
